@@ -1,0 +1,53 @@
+#include <iostream>
+#include <cstdlib>  // For rand() and srand()
+#include <ctime>    // For time()
+
+using namespace std;
+
+int main() {
+    string userChoice;
+    int computerChoice;
+    string computerMove;
+
+    cout << "===== Rock Paper Scissors Game =====" << endl;
+    cout << "Enter your move (rock, paper, scissors): ";
+    cin >> userChoice;
+
+    // Seed for random number generator
+    srand(time(0));
+    computerChoice = rand() % 3; // 0, 1, or 2
+
+    // Assign computer's move
+    if (computerChoice == 0)
+        computerMove = "rock";
+    else if (computerChoice == 1)
+        computerMove = "paper";
+    else
+        computerMove = "scissors";
+
+    cout << "Computer chose: " << computerMove << endl;
+
+    // Compare choices
+    if (userChoice == computerMove) {
+        cout << "It's a tie!" << endl;
+    } 
+    else if (
+        (userChoice == "rock" && computerMove == "scissors") ||
+        (userChoice == "paper" && computerMove == "rock") ||
+        (userChoice == "scissors" && computerMove == "paper")
+    ) {
+        cout << "You win! 🎉" << endl;
+    } 
+    else if (
+        (userChoice == "rock" && computerMove == "paper") ||
+        (userChoice == "paper" && computerMove == "scissors") ||
+        (userChoice == "scissors" && computerMove == "rock")
+    ) {
+        cout << "You lose! 😢" << endl;
+    } 
+    else {
+        cout << "Invalid input! Please enter rock, paper, or scissors." << endl;
+    }
+
+    return 0;
+}
